@@ -1,30 +1,22 @@
 package main
 
 import (
-        "fmt"
-
-        g "github.com/AllenDang/giu"
+	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/widget"
 )
 
-func onClickMe() {
-        fmt.Println("Hello world!")
-}
-
-func onImSoCute() {
-        fmt.Println("Im sooooooo cute!!")
-}
-
-func loop() {
-        g.SingleWindow().Layout(
-                g.Label("Hello world from giu"),
-                g.Row(
-                        g.Button("Click Me").OnClick(onClickMe),
-                        g.Button("I'm so cute").OnClick(onImSoCute),
-                ),
-        )
-}
-
 func main() {
-        wnd := g.NewMasterWindow("Hello world", 400, 200, g.MasterWindowFlagsNotResizable)
-        wnd.Run(loop)
+	a := app.New()
+	w := a.NewWindow("Hello")
+
+	hello := widget.NewLabel("Hello Fyne!")
+	w.SetContent(container.NewVBox(
+		hello,
+		widget.NewButton("Hi!", func() {
+			hello.SetText("Welcome :)")
+		}),
+	))
+
+	w.ShowAndRun()
 }

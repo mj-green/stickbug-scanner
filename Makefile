@@ -13,8 +13,7 @@ windows:
 	GOOS=windows \
 	GOARCH=amd64 \
 	CC=x86_64-w64-mingw32-gcc \
-	CXX=x86_64-w64-mingw32-g++ \
-	go build -v -ldflags "-H=windowsgui -extldflags=-static" -o bin/$(BINARY_NAME).exe $(MAIN_PATH)
+	go build -v -o bin/$(BINARY_NAME).exe $(MAIN_PATH)
 
 clean:
 	rm -rf bin/
